@@ -6,10 +6,13 @@ import authRoutes from "../src/routes/authRoutes.js"
 import { connectDB } from "./lib/db.js";
 import bookRoutes from "./routes/bookRoutes.js";
 import cors from 'cors'
+import job from "./lib/cron.js";
 
 const app = express();
-app.use(express.json())
 const PORT = process.env.PORT;
+
+job.start();
+app.use(express.json())
 app.use(cors())
 
 
